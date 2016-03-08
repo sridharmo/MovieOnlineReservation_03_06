@@ -9,8 +9,6 @@ public class PurchaseInfo {
 	private Integer TimeID;
 	private Integer TransactionStatus;
 	private Integer MailSend;
-	
-	
 	public Integer getPurchaseId() {
 		return PurchaseId;
 	}

@@ -22,5 +22,6 @@ public class Seats {
 	public void setMovieID(Integer movieID) {
 		MovieID = movieID;
 	}
+
 	
 }

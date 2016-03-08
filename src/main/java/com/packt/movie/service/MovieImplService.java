@@ -63,7 +63,13 @@ public class MovieImplService  {
 			movie.setMovieDate(movieIterator.getMovieDate());
 			System.out.println(movieIterator.getMovieName());
 			movie.setMovieName(movieIterator.getMovieName());		
-			
+			movie.setTimeInfo(movieIterator.getTimeInfo());
+			System.out.println("movie time "+movie.getTimeInfo().getMovieTime());
+			String time = movie.getTimeInfo().getMovieTime().toString();
+			String []hrMin = time.split(":");
+		//	movie.setShow1(Integer.parseInt(time));
+			movie.setShow1(Integer.valueOf(hrMin[0]));
+			System.out.println("movie time ="+movie.getShow1());
 			movie.setMovieDuration(movieIterator.getMovieDuration());
 			movieList.add(movie);
 		}

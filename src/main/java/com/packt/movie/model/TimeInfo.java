@@ -6,6 +6,14 @@ public class TimeInfo {
 	public Integer TimeID;
 	public Time MovieTime;
 	public String RecordStatus;
+	public MovieList movieList;
+	
+	public MovieList getMovieList() {
+		return movieList;
+	}
+	public void setMovieList(MovieList movieList) {
+		this.movieList = movieList;
+	}
 	public Integer getTimeID() {
 		return TimeID;
 	}

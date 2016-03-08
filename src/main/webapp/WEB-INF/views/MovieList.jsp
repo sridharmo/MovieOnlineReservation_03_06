@@ -38,25 +38,30 @@
 						</c:url>"
 									alt="image" style="width: 100%" />
 							</div>
-							<h3>${movieList.movieDate}</h3>
+							<%-- <h4>${movieList.show1 }</h4>
+							</br> --%>
+							<h4>${movieList.movieDate}</h4>
 							</br>
-							<h4>${movieList.movieName }</h4>
+							<h4>${movieList.movieName }
+							</h4></br>
+							<%-- <c:set> var="movieName" value=${movieList.movieName}</c:set>
+							<a href="time?movieName=<%="movieName"%>"><h4>${movieList.movieName }</h4></a> --%>
 							</br>
 							<h4>${movieList.movieDuration }</h4>
 							</br>
-							<div class="caption">
-								<div class="col-md-5">
-									<c:forEach items="${movieList.timeInfo}" var="movieTimeInfo">
-										<h4>${movieTimeInfo}</h4>
-										</br>
-								</div>
-							</div>
+							<h4>${movieList.show1 }</h4>
+							out.println("show="+${movieList.show1 })
+							</br>
+							<%-- <h4>${movieList.timeInfo.MovieTime }</h4>
+							</br>
+							<h4>${movieList.timeInfo.MovieTime }</h4>
+							</br> --%>
+						</div>
+					</div>
+				</div>
 			</c:forEach>
 		</div>
-		</div>
-		</div>
-		</c:forEach>
-		</div>
+
 	</section>
 </body>
 </html>

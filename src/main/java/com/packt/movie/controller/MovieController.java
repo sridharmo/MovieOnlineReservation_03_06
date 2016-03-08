@@ -251,4 +251,14 @@ public class MovieController {
 		return "ExistingUser";
 	}
 	
+	/// MovieTime/movie
+		@RequestMapping(value = "/time",params = "movieList", method = RequestMethod.GET)
+		public String getPriceInfo(Model model,@RequestParam(value = "movieList") String movieName ) {
+			System.out.println("getPriceinfo");
+			System.out.println("MovieName="+movieName);
+			//model.addAttribute("movieList", movieList1);
+			return "hellopage";
+		}
+
+	
 }
