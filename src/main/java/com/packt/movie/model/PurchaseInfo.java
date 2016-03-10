@@ -9,6 +9,14 @@ public class PurchaseInfo {
 	private Integer TimeID;
 	private Integer TransactionStatus;
 	private Integer MailSend;
+	private Integer TicketPrice;
+	
+	public Integer getTicketPrice() {
+		return TicketPrice;
+	}
+	public void setTicketPrice(Integer ticketPrice) {
+		TicketPrice = ticketPrice;
+	}
 	public Integer getPurchaseId() {
 		return PurchaseId;
 	}

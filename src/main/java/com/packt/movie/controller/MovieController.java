@@ -37,6 +37,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,8 +46,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.packt.movie.exception.NoMovieFoundException;
 import com.packt.movie.model.ExistingUser;
+import com.packt.movie.model.MovieCart;
 import com.packt.movie.model.MovieList;
 import com.packt.movie.model.NewUser;
+import com.packt.movie.model.PurchaseInfo;
+import com.packt.movie.model.TicketPrice;
 import com.packt.movie.service.MovieImplService;
 import com.packt.movie.service.NewUserImplService;
 
@@ -56,7 +60,7 @@ import com.packt.movie.service.NewUserImplService;
 
 @Controller
 public class MovieController {
-	
+	public MovieCart movieCart;
  
 	@Autowired
 	ServletContext servletContext;
@@ -66,6 +70,9 @@ public class MovieController {
 	DataSource dataSource;
 	private MultipartFile movieImage;
 
+	MovieController(){
+		movieCart = new MovieCart();
+	}
 	
 /*	@InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -124,6 +131,8 @@ public class MovieController {
 			movieList1.setMovieDate(movieList2.getMovieDate());
 			movieList1.setMovieName(movieList2.getMovieName());
 			movieList1.setMovieID(movieList2.getMovieID());
+			movieList1.setMovieDuration(movieList2.getMovieDuration());
+			movieList1.setShow1(movieList2.getShow1());
 			finalListMovies.add(movieList1);
 		}
 		map.addAttribute("MovieList", finalListMovies);
@@ -151,18 +160,19 @@ public class MovieController {
 		if (movieImage != null) { // Multipart
 			String imageFileName = movieImage.getOriginalFilename();
 			
+			
 
 			//String filePath = servletContext.getRealPath("WEB-INF/Images/");
 			String filePath = request.getSession().getServletContext().getRealPath("WEB-INF/images");
 			
 			System.out.println("filePath=" + filePath);
-			/*try {
+			try {
 				Writer writer = new FileWriter(filePath);
 				writer.write(movieList.getMovieImageFileName());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			try {
 			   File uploadingFileObj = new File(movieImage.getOriginalFilename());
 			   movieImage.transferTo(uploadingFileObj);
@@ -202,6 +212,7 @@ public class MovieController {
 	
 	@RequestMapping(value = "/NewUser1", params = "NewUser1", method = RequestMethod.GET)
 	public String addNewUser(Model model) {
+		
 		NewUser newUser = new NewUser();
 		model.addAttribute("newUser", newUser);
 		return "NewUser";
@@ -252,13 +263,36 @@ public class MovieController {
 	}
 	
 	/// MovieTime/movie
-		@RequestMapping(value = "/time",params = "movieList", method = RequestMethod.GET)
-		public String getPriceInfo(Model model,@RequestParam(value = "movieList") String movieName ) {
+		@RequestMapping(value ="/time/{movieName}",method = RequestMethod.GET)		
+		public String getPriceInfo(@PathVariable ("movieName") String movieName, Model model ,HttpServletRequest request ) {
 			System.out.println("getPriceinfo");
-			System.out.println("MovieName="+movieName);
-			//model.addAttribute("movieList", movieList1);
-			return "hellopage";
+			System.out.println("MovieName = "+movieName);
+			PurchaseInfo purchaseInfo = new PurchaseInfo();
+			
+			movieCart.setMovieID(2);
+			movieCart.setTimeID(2);			
+			request.getSession().setAttribute("cart",movieCart);
+		/*	purchaseInfo.setMovieID(movieID);
+			purchaseInfo.setTimeID(timeID);
+			Integer price= getTicketPrice( movieID,  timeID );*/
+			purchaseInfo.setTicketPrice(10);
+			model.addAttribute("TicketPrice",purchaseInfo);	
+			return "PurchaseInfo";
 		}
-
+		
+		@RequestMapping(value="/purchaseInfo",method = RequestMethod.POST)
+		public  String processPurchase(@ModelAttribute("purchaseInfo")  PurchaseInfo purchaseInfo,BindingResult result,Model model){
+			String processMovieTickets;
+			MovieImplService movieImplService = new MovieImplService();
+			purchaseInfo.setMovieID(movieCart.getMovieID());
+			purchaseInfo.setTimeID(movieCart.getTimeID());
+			purchaseInfo.setUserID(movieCart.getUserID());
+			purchaseInfo.setNumberOfMovieTickets(movieCart.getNumberOfTickets());
+			purchaseInfo.setTicketPrice(movieCart.getTiketPrice());
+			processMovieTickets = movieImplService.upDatePurchase(purchaseInfo);
+			
+			return null;
+			
+		}
 	
 }

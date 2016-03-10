@@ -19,6 +19,9 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 import com.mysql.jdbc.Connection;
 import com.packt.movie.model.MovieList;
+import com.packt.movie.model.PurchaseInfo;
+import com.packt.movie.model.Seats;
+import com.packt.movie.model.TicketPrice;
 
 //@Repository
 public class MovieImplService  {
@@ -76,6 +79,53 @@ public class MovieImplService  {
 		session.close();
 		return movieList;
 
+	}
+	
+	public Integer getTicketPrice(Integer movieID, Integer timeID ){
+		Integer ticketPrice = null;
+		try{
+		session = HibernateConfig.sessionFactory.openSession();
+		String hql = "FROM TicketPrice T WHERE T.MovieID='"+movieID+"'"+"AND T.TimeID='"+timeID+"'";
+		List results = (List) session.createQuery(hql).list();
+		if(results.size() >0){
+			Iterator itr = results.iterator();
+			
+			TicketPrice Price = (TicketPrice) itr.next();
+			ticketPrice =Price.getTicketPrice();
+		}
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return ticketPrice;
+	}
+
+	public String upDatePurchase(PurchaseInfo purchaseInfo) {
+		String purchased = null;
+		try{
+			session = HibernateConfig.sessionFactory.openSession();
+			int movieID = purchaseInfo.getMovieID();
+			String hql = "FROM Seats S WHERE S.MovieID='"+movieID+"'";
+			List results = (List) session.createQuery(hql).list();
+			if(results.size() >0){
+				Iterator itr = results.iterator();				
+				Seats seats = (Seats) itr.next();
+				if(purchaseInfo.getNumberOfMovieTickets()< (seats.getTotalSeats()-seats.getNumberOfAvailableSeats())){
+					session.save(purchaseInfo);
+					session.getTransaction().commit();					
+					purchased ="Yes";
+				}
+				else
+					purchased ="No";
+			}
+		}
+	catch(HibernateException e){
+		e.printStackTrace();
+	}finally{
+		session.close();
+	}
+		return purchased;
 	}
 
 }

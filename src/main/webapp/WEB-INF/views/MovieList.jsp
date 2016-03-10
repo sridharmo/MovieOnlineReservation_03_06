@@ -16,7 +16,7 @@
 			<a href="movie?purchase ">Purchase</a>
 		</div>
 		<div style="float: middle">
-			<a href="NewUser1?NewUser1 ">NewUser</a>
+			<a href="NewUser1?NewUser1" >NewUser</a>
 		</div>
 		<div class="jumbotron">
 			<div class="container">
@@ -44,13 +44,23 @@
 							</br>
 							<h4>${movieList.movieName }
 							</h4></br>
-							<%-- <c:set> var="movieName" value=${movieList.movieName}</c:set>
-							<a href="time?movieName=<%="movieName"%>"><h4>${movieList.movieName }</h4></a> --%>
+							<p>
+							 <%-- <c:set var="movieName" value=${movieList.movieName}></c:set> --%>
+							 <%-- <a href=<spring:url value=  "/time?movieName=${movieList.movieName}" > --%>  
+						<%-- 	<a href=" <spring:url value=  "/time?movieName=${movieList.movieName}"/>" --%>
+						<%-- <a href "value ="/time?movieName=${movieList.movieName}"/>"<h4>${movieList.show1 }</h4> --%>
+						<a href="/time?movieName=<%="dieHard"%>">
+						<!-- <a href="value="/time?movieName=${movieList.movieName}" /> "  -->
+    				"><h4>${movieList.show1 }</h4>
+							
+							</a>
+							</p>
+							<%-- <a href="time?${movieList}"><h4>${movieList.show1 }</h4></a> --%>
 							</br>
 							<h4>${movieList.movieDuration }</h4>
 							</br>
-							<h4>${movieList.show1 }</h4>
-							out.println("show="+${movieList.show1 })
+							
+							
 							</br>
 							<%-- <h4>${movieList.timeInfo.MovieTime }</h4>
 							</br>

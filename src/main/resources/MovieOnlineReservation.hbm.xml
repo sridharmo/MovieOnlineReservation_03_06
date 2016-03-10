@@ -52,6 +52,7 @@
 		</id>
 		<property name="TotalSeats" column="TotalSeats" type="int" />
 		<property name="MovieID" column="MovieID" type="int" />
+		<property name="NumberOfAvailableSeats" column="NumberOfAvailableSeats" type="int" />
 	</class>
 
 	<class name="com.packt.movie.model.TicketPrice" table="TICKETPRICE">
