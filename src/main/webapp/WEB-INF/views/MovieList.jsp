@@ -49,11 +49,16 @@
 							 <%-- <a href=<spring:url value=  "/time?movieName=${movieList.movieName}" > --%>  
 						<%-- 	<a href=" <spring:url value=  "/time?movieName=${movieList.movieName}"/>" --%>
 						<%-- <a href "value ="/time?movieName=${movieList.movieName}"/>"<h4>${movieList.show1 }</h4> --%>
-						<a href="/time?movieName=<%="dieHard"%>">
+						<%-- <a href="/time?movieName=<%="dieHard"%>"> --%>
+						<%-- <a href="time"><h4>${movieList.show1 }</h4></a> --%>
+						<h4> ${movieList.movieID}</h4>
+						<a href="<c:url value='/time/12' />" >${movieList.show1 }</a>
+						
 						<!-- <a href="value="/time?movieName=${movieList.movieName}" /> "  -->
-    				"><h4>${movieList.show1 }</h4>
+						
+    					
 							
-							</a>
+							
 							</p>
 							<%-- <a href="time?${movieList}"><h4>${movieList.show1 }</h4></a> --%>
 							</br>

@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<form1:form modelAttribute="purchaseInfo" method="POST" class="form-horizontal" >
+	<!-- <c:url var="saveUrl" value="/purchaseInfo" /> -->
+	<form1:form modelAttribute="purchaseInfo" method="POST" class="form-horizontal"  >
+	<%-- <h4>${purchaseInfo.TicketPrice}</h4></br> --%>
   <select name="NumberOfMovieTickets">
     <option value="1">1</option>
     <option value="2">2</option>

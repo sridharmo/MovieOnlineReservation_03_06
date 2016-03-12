@@ -41,6 +41,7 @@
 		<property name="TransactionStatus" column="TransactionStatus"
 			type="int" />
 		<property name="MailSend" column="MailSend" type="int" />
+		<property name="TicketPrice" column="TicketPrice" type="int" />
 	</class>
 
 	<class name="com.packt.movie.model.Seats" table="SEATS">

@@ -263,36 +263,40 @@ public class MovieController {
 	}
 	
 	/// MovieTime/movie
-		@RequestMapping(value ="/time/{movieName}",method = RequestMethod.GET)		
-		public String getPriceInfo(@PathVariable ("movieName") String movieName, Model model ,HttpServletRequest request ) {
+		@RequestMapping(value ="/time/{movieID}",method = RequestMethod.GET)		
+		
+		public String getPriceInfo( @PathVariable("movieID")int movieID, Model model ,HttpServletRequest request ) {
 			System.out.println("getPriceinfo");
-			System.out.println("MovieName = "+movieName);
-			PurchaseInfo purchaseInfo = new PurchaseInfo();
+		//	System.out.println("MovieName = "+movieName);
+			PurchaseInfo purchaseInfo1 = new PurchaseInfo();
 			
 			movieCart.setMovieID(2);
 			movieCart.setTimeID(2);			
 			request.getSession().setAttribute("cart",movieCart);
-		/*	purchaseInfo.setMovieID(movieID);
-			purchaseInfo.setTimeID(timeID);
-			Integer price= getTicketPrice( movieID,  timeID );*/
-			purchaseInfo.setTicketPrice(10);
-			model.addAttribute("TicketPrice",purchaseInfo);	
+			MovieImplService movieImplService = new MovieImplService();
+			purchaseInfo1.setMovieID(2);
+			purchaseInfo1.setTimeID(2);
+			Integer price= movieImplService.getTicketPrice( 2,  2 );
+			purchaseInfo1.setTicketPrice(price);
+			//model.addAttribute("NumberOfTickets",NumberOfTickets)
+			model.addAttribute("purchaseInfo",purchaseInfo1);	
 			return "PurchaseInfo";
 		}
 		
 		@RequestMapping(value="/purchaseInfo",method = RequestMethod.POST)
-		public  String processPurchase(@ModelAttribute("purchaseInfo")  PurchaseInfo purchaseInfo,BindingResult result,Model model){
+		public  String processPurchase(@ModelAttribute("purchaseInfo")  PurchaseInfo purchaseInfo1,BindingResult result,Model model){
 			String processMovieTickets;
 			MovieImplService movieImplService = new MovieImplService();
-			purchaseInfo.setMovieID(movieCart.getMovieID());
-			purchaseInfo.setTimeID(movieCart.getTimeID());
-			purchaseInfo.setUserID(movieCart.getUserID());
-			purchaseInfo.setNumberOfMovieTickets(movieCart.getNumberOfTickets());
-			purchaseInfo.setTicketPrice(movieCart.getTiketPrice());
-			processMovieTickets = movieImplService.upDatePurchase(purchaseInfo);
+			purchaseInfo1.setMovieID(movieCart.getMovieID());
+			purchaseInfo1.setTimeID(movieCart.getTimeID());
+			purchaseInfo1.setUserID(movieCart.getUserID());
+			//purchaseInfo.setNumberOfMovieTickets(purchaseInfo.);
+			purchaseInfo1.setTicketPrice(movieCart.getTiketPrice());
+			processMovieTickets = movieImplService.upDatePurchase(purchaseInfo1);
 			
 			return null;
 			
 		}
 	
+		
 }
