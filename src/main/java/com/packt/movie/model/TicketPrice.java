@@ -1,34 +1,34 @@
 package com.packt.movie.model;
 
 public class TicketPrice {
-	public Integer TicketPriceID;
-	public Integer TicketPrice;
-	public Integer MovieID;
-	public Integer TimeID;
+	public Integer ticketPriceID;
+	public Integer ticketPrice;
+	public Integer movieID;
+	public Integer timeID;
 	public Integer getTicketPriceID() {
-		return TicketPriceID;
+		return ticketPriceID;
 	}
 	public void setTicketPriceID(Integer ticketPriceID) {
-		TicketPriceID = ticketPriceID;
+		this.ticketPriceID = ticketPriceID;
 	}
 	public Integer getTicketPrice() {
-		return TicketPrice;
+		return ticketPrice;
 	}
 	public void setTicketPrice(Integer ticketPrice) {
-		TicketPrice = ticketPrice;
-	}
-	public Integer getMovieID() {
-		return MovieID;
-	}
-	public void setMovieID(Integer movieID) {
-		MovieID = movieID;
-	}
-	public Integer getTimeID() {
-		return TimeID;
-	}
-	public void setTimeID(Integer timeID) {
-		TimeID = timeID;
+		this.ticketPrice = ticketPrice;
 	}
 	
+	public Integer getMovieID() {
+		return movieID;
+	}
+	public void setMovieID(Integer movieID) {
+		this.movieID = movieID;
+	}
+	public Integer getTimeID() {
+		return timeID;
+	}
+	public void setTimeID(Integer timeID) {
+		this.timeID = timeID;
+	}
 	
 }

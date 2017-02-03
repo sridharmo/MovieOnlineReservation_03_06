@@ -1,63 +1,69 @@
 package com.packt.movie.model;
 
+import java.sql.Time;
+
 public class PurchaseInfo {
 	
-	private Integer PurchaseId;
-	private Integer UserID;
-	private Integer MovieID;
-	private Integer NumberOfMovieTickets;
-	private Integer TimeID;
-	private Integer TransactionStatus;
-	private Integer MailSend;
-	private Integer TicketPrice;
-	
-	public Integer getTicketPrice() {
-		return TicketPrice;
-	}
-	public void setTicketPrice(Integer ticketPrice) {
-		TicketPrice = ticketPrice;
-	}
+	private Integer purchaseId;
+	private Integer userID;
+	private Integer movieID;
+	private Integer numberOfMovieTickets;
+	private Integer timeID;
+	private Integer transactionStatus;
+	private Integer mailSend;
+	private Integer ticketPrice;
 	public Integer getPurchaseId() {
-		return PurchaseId;
+		return purchaseId;
 	}
 	public void setPurchaseId(Integer purchaseId) {
-		PurchaseId = purchaseId;
+		this.purchaseId = purchaseId;
 	}
 	public Integer getUserID() {
-		return UserID;
+		return userID;
 	}
 	public void setUserID(Integer userID) {
-		UserID = userID;
+		this.userID = userID;
 	}
 	public Integer getMovieID() {
-		return MovieID;
+		return movieID;
 	}
 	public void setMovieID(Integer movieID) {
-		MovieID = movieID;
+		this.movieID = movieID;
 	}
 	public Integer getNumberOfMovieTickets() {
-		return NumberOfMovieTickets;
+		return numberOfMovieTickets;
 	}
 	public void setNumberOfMovieTickets(Integer numberOfMovieTickets) {
-		NumberOfMovieTickets = numberOfMovieTickets;
+		this.numberOfMovieTickets = numberOfMovieTickets;
 	}
+	
 	public Integer getTimeID() {
-		return TimeID;
+		return timeID;
 	}
 	public void setTimeID(Integer timeID) {
-		TimeID = timeID;
+		this.timeID = timeID;
 	}
 	public Integer getTransactionStatus() {
-		return TransactionStatus;
+		return transactionStatus;
 	}
 	public void setTransactionStatus(Integer transactionStatus) {
-		TransactionStatus = transactionStatus;
+		this.transactionStatus = transactionStatus;
 	}
 	public Integer getMailSend() {
-		return MailSend;
+		return mailSend;
 	}
 	public void setMailSend(Integer mailSend) {
-		MailSend = mailSend;
+		this.mailSend = mailSend;
 	}
+	public Integer getTicketPrice() {
+		return ticketPrice;
+	}
+	public void setTicketPrice(Integer ticketPrice) {
+		this.ticketPrice = ticketPrice;
+	}
+	
+	
+	
+	
 	
 }

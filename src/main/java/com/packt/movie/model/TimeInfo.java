@@ -1,37 +1,50 @@
 package com.packt.movie.model;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
 public class TimeInfo {
-	public Integer TimeID;
-	public Time MovieTime;
-	public String RecordStatus;
-	public MovieList movieList;
+	public Integer timeID;
+	public Time movieTime;
+	public String recordStatus;
 	
-	public MovieList getMovieList() {
-		return movieList;
-	}
-	public void setMovieList(MovieList movieList) {
-		this.movieList = movieList;
-	}
+	public List<MovieList> movieList = new ArrayList<MovieList>();
 	public Integer getTimeID() {
-		return TimeID;
+		return timeID;
 	}
 	public void setTimeID(Integer timeID) {
-		TimeID = timeID;
+		this.timeID = timeID;
 	}
+	
 	public Time getMovieTime() {
-		return MovieTime;
+		return movieTime;
 	}
 	public void setMovieTime(Time movieTime) {
-		MovieTime = movieTime;
+		this.movieTime = movieTime;
 	}
 	public String getRecordStatus() {
-		return RecordStatus;
+		return recordStatus;
 	}
 	public void setRecordStatus(String recordStatus) {
-		RecordStatus = recordStatus;
+		this.recordStatus = recordStatus;
 	}
+	
+	
+	
+	public List<MovieList> getMovieList() {
+		return movieList;
+	}
+	public void setMovieList(List<MovieList> movieList) {
+		this.movieList = movieList;
+	}
+	
+	
 	
 	
 }

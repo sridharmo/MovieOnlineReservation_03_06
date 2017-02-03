@@ -6,6 +6,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/resources/images"/>
         <property name="java-output-path" value="/MovieReservation_02_28/target/classes"/>
-        <property name="context-root" value="MovieReservation_02_28"/>
+        <property name="context-root" value="MovieReservation"/>
     </wb-module>
 </project-modules>

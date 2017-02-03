@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateConfig {
-	static SessionFactory sessionFactory;
+	public static SessionFactory sessionFactory;
 	static{
 	try{
 		System.out.println("HibernateConfig");

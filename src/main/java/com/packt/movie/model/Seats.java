@@ -1,35 +1,35 @@
 package com.packt.movie.model;
 
 public class Seats {
-	public Integer SeatID;
-	public Integer TotalSeats;
-	public Integer MovieID;
-	public Integer NumberOfAvailableSeats;
-	
-	public Integer getNumberOfAvailableSeats() {
-		return NumberOfAvailableSeats;
-	}
-	public void setNumberOfAvailableSeats(Integer numberOfAvailableSeats) {
-		NumberOfAvailableSeats = numberOfAvailableSeats;
-	}
+	public Integer seatID;
+	public Integer totalSeats;
+	public Integer movieID;
+	public Integer numberOfAvailableSeats;
 	public Integer getSeatID() {
-		return SeatID;
+		return seatID;
 	}
 	public void setSeatID(Integer seatID) {
-		SeatID = seatID;
+		this.seatID = seatID;
 	}
 	public Integer getTotalSeats() {
-		return TotalSeats;
+		return totalSeats;
 	}
 	public void setTotalSeats(Integer totalSeats) {
-		TotalSeats = totalSeats;
+		this.totalSeats = totalSeats;
 	}
 	public Integer getMovieID() {
-		return MovieID;
+		return movieID;
 	}
 	public void setMovieID(Integer movieID) {
-		MovieID = movieID;
+		this.movieID = movieID;
 	}
-
+	public Integer getNumberOfAvailableSeats() {
+		return numberOfAvailableSeats;
+	}
+	public void setNumberOfAvailableSeats(Integer numberOfAvailableSeats) {
+		this.numberOfAvailableSeats = numberOfAvailableSeats;
+	}
+	
+	
 	
 }

@@ -53,7 +53,14 @@
 					<div class="col-lg-10">
 						<form1:input id="email" path="email" type="text"
 							class="form:input-large" />
-							<form1:errors path="email" cssClass="text-danger"/>
+						<%
+							if (session.getAttribute("NeedToUpdatePaymentInfo") == "true") {
+						%>
+						<div>value=${email}</div>
+						<%
+							}
+						%>
+						<form1:errors path="email" cssClass="text-danger"/>
 						<br />
 					</div>
 				</div>

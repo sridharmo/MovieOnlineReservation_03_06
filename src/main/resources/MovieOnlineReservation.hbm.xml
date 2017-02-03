@@ -5,11 +5,11 @@
 
 <hibernate-mapping>
 
-	<class name="com.packt.movie.model.NewUser" table="UserInfo">
+	 <class name="com.packt.movie.model.NewUser" table="UserInfo">
 		<meta attribute="class-description">
 			This class contains the UserInfo detail.
 		</meta>
-		<id name="UserID" type="int" column="UserID">
+		<id name="userID" type="int" column="UserID">
 			<generator class="increment"></generator>
 		</id>
 		<property name="email" column="Email" type="string" />
@@ -21,57 +21,59 @@
 		<property name="firstName" column="FirstName" type="string" />
 		<property name="lastName" column="LastName" type="string" />
 		<property name="zipCode" column="ZipCode" type="int" />
-		<property name="creditCardNumber" column="CreditCardNumber"
+		<property name="creditCardNumber" column="CreditCardNumber" 
 			type="int" />
+			
 	</class>
 
 	 <class name="com.packt.movie.model.PurchaseInfo" table="PURCHASEINFO">
 		<meta attribute="class-description">
 			This class contains the UserInfo detail.
 		</meta>
-		<id name="PurchaseId" type="int" column="PurchaseId">
+		<id name="purchaseId" type="int" column="PurchaseId">
 			<generator class="increment"></generator>
 		</id>
-		<property name="UserID" column="UserID" type="int" />
+		<property name="userID" column="UserID" type="int" />
 	
-		<property name="MovieID" column="MovieID" type="int" />
-		<property name="NumberOfMovieTickets" column="NumberOfTickets"
+		<property name="movieID" column="MovieID" type="int" />
+		<property name="numberOfMovieTickets" column="NumberOfTickets"
 			type="int" />
-		<property name="TimeID" column="TimeID" type="int" />
-		<property name="TransactionStatus" column="TransactionStatus"
+		<property name="timeID" column="TimeID" type="int" />
+		<property name="transactionStatus" column="TransactionStatus"
 			type="int" />
-		<property name="MailSend" column="MailSend" type="int" />
-		<property name="TicketPrice" column="TicketPrice" type="int" />
+		<property name="mailSend" column="MailSend" type="int" />
+		<property name="ticketPrice" column="TicketPrice" type="int" />
 	</class>
 
 	<class name="com.packt.movie.model.Seats" table="SEATS">
 		<meta attribute="class-description">
 			This class contains the UserInfo detail.
 		</meta>
-		<id name="SeatID" type="int" column="SeatID">
+		<id name="seatID" type="int" column="SeatID">
 			<generator class="increment"></generator>
 		</id>
-		<property name="TotalSeats" column="TotalSeats" type="int" />
-		<property name="MovieID" column="MovieID" type="int" />
-		<property name="NumberOfAvailableSeats" column="NumberOfAvailableSeats" type="int" />
+		<property name="totalSeats" column="TotalSeats" type="int" />
+		<property name="movieID" column="MovieID" type="int" />
+		<property name="numberOfAvailableSeats" column="NumberOfAvailableSeats" type="int" />
 	</class>
 
 	<class name="com.packt.movie.model.TicketPrice" table="TICKETPRICE">
 		<meta attribute="class-description">
 			This class contains the UserInfo detail.
 		</meta>
-		<id name="TicketPriceID" type="int" column="TicketPriceID">
+		<id name="ticketPriceID" type="int" column="TicketPriceID">
 			<generator class="increment"></generator>
 		</id>
-		<property name="TicketPrice" column="TicketPrice" type="int" />
-		<property name="MovieID" column="MovieID" type="int" />
-		<property name="TimeID" column="TimeID" type="int" />
+		<property name="ticketPrice" column="TicketPrice" type="int" />
+		<property name="movieID" column="MovieID" type="int" />
+		<property name="timeID" column="TimeID" type="int" />
 	</class>
 	
-	<class name="com.packt.movie.model.MovieList" table="MOVIE_LIST">
+	<!-- <class name="com.packt.movie.model.MovieList" table="MOVIE_LIST">
 		<meta attribute="class-description">
 			This class contains the Movie details.
 		</meta>
+		<cache usage="read-write"/>
 		<id name="movieID" type="int" column="movieID">
 			<generator class="increment"></generator>
 		</id>
@@ -80,26 +82,25 @@
 		<property name="movieDuration" column="movieDuration" type="int" />
 		<property name="priceID" column="PriceID" type="int" />
 		<property name="show1" column="Show1" type="int" />
-			<!-- <property name="show2" column="Show2" type="int" />
-			<property name="show3" column="Show3" type="int" /> -->
+			<property name="show2" column="Show2" type="int" />
+			<property name="show3" column="Show3" type="int" />
 		<one-to-one name="timeInfo"  class="com.packt.movie.model.TimeInfo" cascade="save-update" ></one-to-one>
 			
 		
-	</class>
+	</class>  -->
 	
 	<class name="com.packt.movie.model.TimeInfo" table="TIMEINFO1">
 		<meta attribute="class-description">
 			This class contains the Movie TimeInfo details.
 		</meta>
-		<id name="TimeID" type="int" column="TimeID">
+		<id name="timeID" type="int" column="TimeID">
 			<!-- <generator class="increment"></generator> -->
 			<generator class="foreign">
 				<param name="property">movieList</param>
 			</generator>
 		</id>
-		<one-to-one name="movieList" class="com.packt.movie.model.MovieList"
-		constrained ="true"></one-to-one>
-		<property name="MovieTime" column="MovieTime" type="time" />
-		<property name="RecordStatus" column="RecordStatus" type="string" />
+		
+		<property name="movieTime" column="MovieTime" type="time" />
+		<property name="recordStatus" column="RecordStatus" type="string" />
 		</class> 
 </hibernate-mapping>

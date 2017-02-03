@@ -8,15 +8,29 @@
 <title>MovieList</title>
 </head>
 <body>
+
 	<section>
+		<%
+				if (session.getAttribute("IsAdmin") == "Yes") {
+			%>
 		<div style="float: left">
 			<a href="AddMovie?AddMovie ">AddMovie</a>
 		</div>
+		<%
+				} else {
+			%>
+		<p>other content</p>
+		<%
+				}
+			%>
 		<div style="float: right">
 			<a href="movie?purchase ">Purchase</a>
 		</div>
 		<div style="float: middle">
-			<a href="NewUser1?NewUser1" >NewUser</a>
+			<a href="NewUser1?NewUser1">NewUser</a>
+		</div>
+		<div style="float: middle">
+			<a href="Login?Login">ExistingUser</a>
 		</div>
 		<div class="jumbotron">
 			<div class="container">
@@ -42,31 +56,31 @@
 							</br> --%>
 							<h4>${movieList.movieDate}</h4>
 							</br>
-							<h4>${movieList.movieName }
-							</h4></br>
+							<h4>${movieList.movieName }</h4>
+							</br>
 							<p>
-							 <%-- <c:set var="movieName" value=${movieList.movieName}></c:set> --%>
-							 <%-- <a href=<spring:url value=  "/time?movieName=${movieList.movieName}" > --%>  
-						<%-- 	<a href=" <spring:url value=  "/time?movieName=${movieList.movieName}"/>" --%>
-						<%-- <a href "value ="/time?movieName=${movieList.movieName}"/>"<h4>${movieList.show1 }</h4> --%>
-						<%-- <a href="/time?movieName=<%="dieHard"%>"> --%>
-						<%-- <a href="time"><h4>${movieList.show1 }</h4></a> --%>
-						<h4> ${movieList.movieID}</h4>
-						<a href="<c:url value='/time/12' />" >${movieList.show1 }</a>
-						
-						<!-- <a href="value="/time?movieName=${movieList.movieName}" /> "  -->
-						
-    					
-							
-							
+								<%-- <c:set var="movieName" value=${movieList.movieName}></c:set> --%>
+								<%-- <a href=<spring:url value=  "/time?movieName=${movieList.movieName}" > --%>
+								<%-- 	<a href=" <spring:url value=  "/time?movieName=${movieList.movieName}"/>" --%>
+								<%-- <a href "value ="/time?movieName=${movieList.movieName}"/>"<h4>${movieList.show1 }</h4> --%>
+								<%-- <a href="/time?movieName=<%="dieHard"%>"> --%>
+								<%-- <a href="time"><h4>${movieList.show1 }</h4></a> --%>
+							<h4>${movieList.movieID}</h4>
+							<c:forEach items="${movieList.timeInfo}" var="timeInfo">
+							 <a href="<c:url value='/time/2' />">${timeInfo.movieTime }</a> 
+							 </c:forEach>
+							<%-- <a href="<c:url value='/time/"+${movieList} +"'/>">${movieList.show1 }</a> --%>
+
+							<!-- <a href="value="/time?movieName=${movieList.movieName}" /> "  -->
+
+
+
+
 							</p>
 							<%-- <a href="time?${movieList}"><h4>${movieList.show1 }</h4></a> --%>
 							</br>
 							<h4>${movieList.movieDuration }</h4>
-							</br>
-							
-							
-							</br>
+							</br> </br>
 							<%-- <h4>${movieList.timeInfo.MovieTime }</h4>
 							</br>
 							<h4>${movieList.timeInfo.MovieTime }</h4>
@@ -78,5 +92,6 @@
 		</div>
 
 	</section>
+	
 </body>
 </html>

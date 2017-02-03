@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class NewUser {
 	private int UserID;
 	@NotEmpty(message="Please enter your email")
-	@Email
+	//@Email
 	private String email;
 	@Size(min=6, max=8,message="{NewUser.passWord.validation}")
 	private String passWord;
@@ -22,10 +22,18 @@ public class NewUser {
 	private String lastName;
 	@Digits(integer =5, message="{Newuser.zipCode.validation}", fraction = 0)
 	private int zipCode;
-	
-	
+	private String register;
+	private int purchaseInfoID;
 
 	
+
+	public String getRegister() {
+		return register;
+	}
+
+	public void setRegister(String register) {
+		this.register = register;
+	}
 
 	public String getSaveCardInfo() {
 		return saveCardInfo;
@@ -44,7 +52,7 @@ public class NewUser {
 	}
 
 	
-	private int PurchaseInfoID;
+	
 	
 	public int getExpirationYear() {
 		return expirationYear;
@@ -54,12 +62,14 @@ public class NewUser {
 		this.expirationYear = expirationYear;
 	}
 
+	
+
 	public int getPurchaseInfoID() {
-		return PurchaseInfoID;
+		return purchaseInfoID;
 	}
 
 	public void setPurchaseInfoID(int purchaseInfoID) {
-		PurchaseInfoID = purchaseInfoID;
+		this.purchaseInfoID = purchaseInfoID;
 	}
 
 	public String getEmail() {

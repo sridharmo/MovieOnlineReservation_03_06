@@ -3,28 +3,26 @@ package com.packt.movie.model;
 import java.sql.Time;
 
 public class MovieTimeInfo {
-	private int TimeID;
-	private Time MovieTime;
-	private String RecordStatus;
+	private int timeID;
+	private Time movieTime;
+	private String recordStatus;
 	public int getTimeID() {
-		return TimeID;
+		return timeID;
 	}
 	public void setTimeID(int timeID) {
-		TimeID = timeID;
+		this.timeID = timeID;
 	}
-	
 	public Time getMovieTime() {
-		return MovieTime;
+		return movieTime;
 	}
 	public void setMovieTime(Time movieTime) {
-		MovieTime = movieTime;
+		this.movieTime = movieTime;
 	}
 	public String getRecordStatus() {
-		return RecordStatus;
+		return recordStatus;
 	}
 	public void setRecordStatus(String recordStatus) {
-		RecordStatus = recordStatus;
+		this.recordStatus = recordStatus;
 	}
-	
 	
 }

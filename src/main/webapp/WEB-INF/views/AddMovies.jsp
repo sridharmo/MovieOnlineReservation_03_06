@@ -10,6 +10,8 @@
 <title>Add Movies to Database as Admin</title>
 </head>
 <body>
+
+
 	<form1:form modelAttribute="movieList" method="POST" 
 		class="form-horizontal" enctype="multipart/form-data">
 
